@@ -1,0 +1,6 @@
+use valgrind to check for memory leaks
+remember to gcc -g to be able to use it though
+
+Variables in the stack have a scope, so it is easy 
+to define their lifetime. heap memory  blocks do not
+have scope, so its lifetime is unclear. 
