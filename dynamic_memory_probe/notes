@@ -1,0 +1,2 @@
+cat /proc/####/maps
+this is how you look at the memory layout of a running process

@@ -1,0 +1,27 @@
+A static library is for creating an archive of a bunch of relocatable 
+object files. 
+
+once .o files are made for everything in the project, you can make 
+the static library using the ar command
+
+ar crs libgeometry.a trig.o 2d.o 3d.o
+
+make a good directory for the library and move it there:
+
+mkdir -p /opt/geometry
+mv libgeometry.a /opt/geometry
+
+to see the contents:
+
+ar t /opt/geometry/libgeometry.a
+
+putting it in the opt directory makes it easy for other programs to 
+locate it.
+
+gcc main.o -L /opt/geometry/ -lgeometry -lm -o final.out
+
+the main which wants to use the shared library has to include the 
+header file that makes the declarations, -L option tells gcc where 
+to look for the library.
+-lgeometry makes it look for something called libgeometry
+-lm is for the math functions (?) glibm

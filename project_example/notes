@@ -1,0 +1,73 @@
+#define file 1000
+
+1) preprocessing
+
+this is the command to pre-process a c file.     
+
+    gcc -E average.c
+
+you can pre-process any kind of file, even this one, and if
+you did so the word file would get replaced with 1000 because 
+that is defined above. the pre-processor does not know anything
+about c! You can use the c pre-processor for other things like 
+making batch replacements in text files. 
+
+2) compiling
+
+compiler accepts translation unit prepared by the preprocessor
+and generates corresponding assembly instructions. if there are 
+multiple source files, the assembler and linker make them into
+relocatable object files and finally forming an executable. 
+
+to view the assembly:
+
+    gcc -S average.c
+
+3) assembling
+
+Assembler produces object files that contain machine code.
+each operating system defines its own object file format, even
+if they are on the same hardware. 
+
+    as assembly.c -o output.o
+
+but gcc can take care of it:
+
+to assemble into object files 
+
+    gcc -c average_main.c   
+    gcc -c average.c
+
+4) linking
+
+    nm target.o 
+lets you see the symbols found in an object file.
+    
+    readelf -s target.o
+gives you more information about the symbols.
+
+symbols that are unresolved will be marked with a U in nm.
+when you run gcc with a list of .o files, it will look for
+the main function, as well as for definitions of the 
+unresolved symbols.
+
+the C linker can be fooled by different functions with 
+the same name. this is why C++ does name-mangling for 
+overloaded functions.
+
+to see the disassembly of the machine instructions
+under each function symbol, you can use:
+    objdump -d target.o
+
+using ld is hard... gcc can do this part too
+
+to link the two object files and make an executable:
+
+gcc average.o average_main.o
+
+
+nm average_main.o
+                 U avg #unresolved symbol to be linked!
+                 U _GLOBAL_OFFSET_TABLE_
+0000000000000000 T main
+                 U printf

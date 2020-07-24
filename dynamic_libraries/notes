@@ -1,0 +1,24 @@
+gcc -c geom_2d.c -fPIC -o 2d.o
+-fPIC option is mandatory for shared libraries
+PIC means position independent code
+The addresses in these files are relative, not absolute like in static libraries
+
+the shared library is an object file, and not just an archive like
+a static library.
+
+use these commands to make the file and put it in the right place: 
+
+gcc -shared 2d.o 3d.o trigon.o -o libgeometry.so
+mkdir -p /opt/geometry
+mv libgeometry.so /opt/geometry
+
+once you compile main.o using
+gcc -c xxxxx.c -o main.o
+
+link it with 
+gcc main.o -L /opt/geometry -lgeometry -lm -o final.out
+
+this file will still have errors running because the dynamic library is
+not on the known path. you need to add it to the path by using
+
+export LD_LIBRARY_PATH=/opt/geometry

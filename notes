@@ -1,0 +1,33 @@
+C is cross-platform but not portable, this means that the source code 
+can be compiled to different platforms (combination of operating 
+system and hardware and instruction architecture) but it is not like
+java in the sense that you can take the exact same binaries and run 
+them on different platforms. 
+
+As a rule of thumb, declarations go in header files and corresponding
+definitions go in source files.
+
+ABI Application Binary Interface:
+instruction set, memory layout, endianness, registers, alignment policy,
+function calling convention, system calls, obj file format, name mangling.
+
+System V is the most widely used in Unix systems, Executable and Linking
+Format is the standard object file format. 
+
+Relocatable object files - output of the assembly step of compilation. 
+they are temporary products. includes:
+    machine-level instructions
+    values of global variables
+    symbol table of all defined references. 
+
+They are called RELOCATABLE because of what the linker does to put them
+together into a larger executable or shared object file. Instructions have
+no addresses in these files (since they are meant to be relocated). They
+obtain addresses only after linking. 
+
+With static libraries, the linker puts everything together into the final 
+executable. It's like a frozen binary in python. With dynamically linked
+libraries, it is possible to have unresolved references that are only 
+resolved at execution time. 
+
+ 
