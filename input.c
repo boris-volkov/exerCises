@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-int main()
+main()
 {
-	int inp;
-	printf("enter something: ");
-	scanf(
+	int c;
+	printf("%d\n", EOF);
+	while ((c = getchar()) != EOF)
+		putchar(c);
 }
