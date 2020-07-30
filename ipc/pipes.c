@@ -33,7 +33,7 @@ int main() {
 		char buff[32];
 		// parent reads from read file descriptor
 		fprintf(stdout, "Parent: reading from child... \n");
-		int num_of_read_bytes = read(fds[0], buff, 32);
+		int num_of_read_bytes = read(fds[0], buff, 32); // blocked while waiting
 		fprintf(stdout, "Parent: received from child: %s\n", buff);
 	}
 	return 0;
