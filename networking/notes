@@ -1,0 +1,7 @@
+A network protocol fills the gaps between various LAN's in order to 
+connect them to each other.
+
+The actual natworking functionality is provided by the kernel.
+
+Every node on the network has an IP address, but to be visible on the 
+internet, a node must have a public IP address.
